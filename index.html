@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Live Game - CIV vs ECU</title>
+    <title>Live Game - ECU vs CUW</title>
     <style>
         * {
             margin: 0;
@@ -121,8 +121,8 @@
 <script>
     /**
      * Logic for Screen Size and Video Selection:
-     * Shows 'civ_vs_ecu.mp4' for 768x320 (horizontal)
-     * Shows 'civ_vs_ecu_vert.mp4' for 600x800 (vertical)
+     * Shows 'ec_vs_cu.mp4' for 768x320 (horizontal)
+     * Shows 'ec_vs_cu_vert.mp4' for 600x800 (vertical)
      */
     function updateVideoSource() {
         const video = document.getElementById('video');
@@ -131,12 +131,12 @@
         
         let videoSrc = "";
         if (width === 768 && height === 320) {
-            videoSrc = "./video/civ_vs_ecu.mp4";
+            videoSrc = "./video/ec_vs_cu.mp4";
         } else if (width === 600 && height === 800) {
-            videoSrc = "./video/civ_vs_ecu_vert.mp4";
+            videoSrc = "./video/ec_vs_cu_vert.mp4";
         } else {
             // Default logic based on orientation if exact sizes don't match
-            videoSrc = (height > width) ? "./video/civ_vs_ecu_vert.mp4" : "./video/civ_vs_ecu.mp4";
+            videoSrc = (height > width) ? "./video/ec_vs_cu_vert.mp4" : "./video/ec_vs_cu.mp4";
         }
 
         // Only update and reload if the source actually changes
@@ -156,10 +156,10 @@
     /**
      * Score Logic:
      * Getting the score from the server and managing local storage.
-     * Match: Costa de Marfil vs Ecuador
+     * Match: Ecuador vs Curazao
      */
-    const GAME_ID = "costa_marfil_vs_ecuador";
-    const STORAGE_KEY = "civ_vs_ecu_score";
+    const GAME_ID = "ecuador_vs_curazao";
+    const STORAGE_KEY = "ecu_vs_cuw_score";
     
     // Load initial score from local storage or default to 0-0
     let previousNumbers = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [0, 0];
@@ -168,7 +168,7 @@
 
     async function loadData() {
         try {
-            const res = await fetch("https://doradobet-server.onrender.com/data?gameId=14881863");
+            const res = await fetch("https://doradobet-server.onrender.com/data?gameId=15682183");
             if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
             
             const data = await res.json();
