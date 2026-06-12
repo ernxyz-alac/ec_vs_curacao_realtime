@@ -126,8 +126,9 @@
      */
     function updateVideoSource() {
         const video = document.getElementById('video');
-        const width = window.innerWidth;
-        const height = window.innerHeight;
+        const params = new URLSearchParams(window.location.search);
+        const width = parseInt(params.get('width')) || window.innerWidth;
+        const height = parseInt(params.get('height')) || window.innerHeight;
         
         let videoSrc = "";
         if (width === 768 && height === 320) {
